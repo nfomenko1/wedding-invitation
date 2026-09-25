@@ -1,0 +1,63 @@
+/*
+ * Base styles: structural only. No visual design decisions here
+ * (colors, fonts, spacing scale) until they are explicitly defined.
+ *
+ * Breakpoints (mobile-first; keep in sync with MEDIA in src/lib/gsap.js):
+ *   mobile   < 768px
+ *   tablet   768px to 1023px
+ *   desktop  >= 1024px
+ * Custom properties cannot be used inside media queries, so write the
+ * literal values: @media (min-width: 768px), @media (min-width: 1024px)
+ */
+
+:root {
+  /* Fluid side gutter; adjust once the design is defined. */
+  --gutter: clamp(1rem, 4vw, 3rem);
+}
+
+html {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Keep keyboard focus visible. */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Visually hidden but available to screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/*
+ * Reduced motion: neutralise CSS animations and transitions globally.
+ * GSAP animations must handle this separately via gsap.matchMedia()
+ * or usePrefersReducedMotion(). Lenis is disabled automatically.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

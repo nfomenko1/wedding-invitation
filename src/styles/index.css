@@ -1,0 +1,4 @@
+/* Global stylesheet entry. Import order matters. */
+@import 'lenis/dist/lenis.css';
+@import './reset.css';
+@import './base.css';
