@@ -1,0 +1,49 @@
+.ribbons {
+  --h: clamp(9rem, 16vw, 14rem);
+
+  position: relative;
+  z-index: 3;
+  height: var(--h);
+  /* Sits half over the gallery and half over the details section. */
+  margin-block: calc(var(--h) / -2);
+  pointer-events: none;
+}
+
+.ribbon {
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  width: 120%;
+  padding-block: clamp(0.7rem, 1.2vw, 1.05rem);
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 0 16px 34px -14px rgb(20 4 8 / 0.55);
+}
+
+.ribbon--a {
+  translate: 0 -62%;
+  rotate: -4deg;
+  background: linear-gradient(180deg, var(--gold-light), var(--gold) 55%, var(--gold-deep));
+  color: var(--wine-900);
+}
+
+.ribbon--b {
+  translate: 0 -38%;
+  rotate: 3deg;
+  background: var(--wine-700);
+  color: var(--gold-light);
+  border-block: 1px solid rgb(220 194 143 / 0.5);
+}
+
+.ribbon__track {
+  display: inline-flex;
+}
+
+.ribbon__track span {
+  padding-right: 0.3em;
+}

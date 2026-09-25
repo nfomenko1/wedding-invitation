@@ -1,0 +1,77 @@
+.ornament {
+  display: block;
+  overflow: visible;
+}
+
+/* Strokes are fully drawn by default; draw() animates the offset. */
+.draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+/* ---------- Monogram ---------- */
+
+.monogram {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--size, 120px);
+  aspect-ratio: 1;
+}
+
+.monogram svg {
+  position: absolute;
+  inset: 0;
+  rotate: -90deg;
+  overflow: visible;
+}
+
+.monogram__letters {
+  font-family: var(--font-script);
+  font-size: calc(var(--size, 120px) * 0.3);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.monogram__letters i {
+  font-style: normal;
+  font-size: 0.6em;
+  margin-inline: 0.08em;
+  opacity: 0.8;
+}
+
+/* ---------- Round badge ---------- */
+
+.round-badge {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.round-badge svg {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+.round-badge text {
+  fill: currentColor;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.round-badge__center {
+  font-family: var(--font-script);
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+.round-badge__center i {
+  font-style: normal;
+  font-size: 0.6em;
+  margin-inline: 0.05em;
+}

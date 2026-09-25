@@ -1,0 +1,15 @@
+.split__mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  /* Enlarge the mask box without changing layout, so italics and
+     descenders are not clipped. */
+  padding: 0.08em 0.08em 0.16em;
+  margin: -0.08em -0.08em -0.16em;
+}
+
+.split__word,
+.split__char {
+  display: inline-block;
+  transform-origin: 0% 100%;
+}
