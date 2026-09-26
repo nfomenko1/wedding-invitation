@@ -1,0 +1,35 @@
+.image-frame {
+  position: relative;
+  aspect-ratio: var(--ratio, 4 / 5);
+  overflow: hidden;
+  background: var(--color-stone);
+}
+
+.image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-frame__placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, var(--color-beige) 0%, var(--color-stone) 55%, var(--color-stone-deep) 100%);
+}
+
+/* Inner hairline, like a passe-partout. */
+.image-frame__placeholder::after {
+  content: '';
+  position: absolute;
+  inset: clamp(0.625rem, 1.5vw, 1rem);
+  border: 1px solid rgb(255 255 255 / 0.55);
+}
+
+.image-frame__label {
+  position: absolute;
+  left: clamp(1.25rem, 2.5vw, 2rem);
+  bottom: clamp(1.25rem, 2.5vw, 2rem);
+  right: clamp(1.25rem, 2.5vw, 2rem);
+  color: var(--color-ink-muted);
+  letter-spacing: 0.2em;
+}

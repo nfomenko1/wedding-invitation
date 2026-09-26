@@ -1,278 +1,56 @@
-.rsvp {
-  position: relative;
-  background: var(--wine-800);
-  color: var(--ivory);
+.rsvp__description {
+  max-width: 26rem;
+  margin-top: 1.75rem;
 }
 
-.rsvp__pin {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100svh;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
-  column-gap: clamp(2rem, 5vw, 6rem);
-  max-width: var(--container);
-  margin-inline: auto;
-  padding: 7rem var(--gutter) 5rem;
-}
-
-.rsvp__glow {
-  position: absolute;
-  right: -12vw;
-  top: 50%;
-  width: 70vw;
-  aspect-ratio: 1;
-  translate: 0 -50%;
-  background: radial-gradient(circle, rgb(185 150 88 / 0.2), transparent 60%);
-  pointer-events: none;
-}
-
-.rsvp__copy {
-  position: relative;
+.rsvp__deadline {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.rsvp__title {
-  display: flex;
-  flex-direction: column;
-  margin-block: 1.8rem 2rem;
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(3.6rem, 8vw, 8.5rem);
-  line-height: 0.92;
-  letter-spacing: -0.01em;
-}
-
-.rsvp__title em {
-  font-style: italic;
-  color: var(--gold-light);
-  padding-left: 0.6em;
-}
-
-.rsvp__text {
-  max-width: 27rem;
-  margin-bottom: 2.6rem;
-  line-height: 1.75;
-  color: rgb(246 239 228 / 0.75);
-}
-
-.rsvp__cta {
-  /* larger hit area for the magnetic effect */
-  padding: 1.5rem;
-  margin: -1.5rem;
-}
-
-/* ---------- CTA ---------- */
-
-.cta {
-  position: relative;
-  display: inline-flex;
   align-items: center;
-  gap: 1.2rem;
-  padding: 1.25rem 2.1rem;
-  overflow: hidden;
-  isolation: isolate;
-  border: 1px solid var(--gold);
-  border-radius: 999px;
-  color: var(--gold-light);
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  transition: color 0.6s var(--ease-out);
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
-.cta::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(120deg, var(--gold-light), var(--gold));
-  border-radius: inherit;
-  transform: translateY(101%);
-  transition: transform 0.7s var(--ease-out);
+.rsvp__rule {
+  width: 2.5rem;
+  height: 1px;
+  background: var(--color-line-strong);
 }
 
-.cta:hover,
-.cta:focus-visible {
-  color: var(--wine-900);
-}
-
-.cta:hover::before,
-.cta:focus-visible::before {
-  transform: translateY(0);
-}
-
-.cta:focus-visible {
-  outline: 1px solid var(--gold-light);
-  outline-offset: 5px;
-}
-
-.cta__arrow {
-  font-size: 1.1rem;
-  letter-spacing: 0;
-  transition: translate 0.6s var(--ease-out);
-}
-
-.cta:hover .cta__arrow {
-  translate: 0.35rem 0;
-}
-
-/* ---------- Envelope ----------
- * Default CSS = the final "opened" state (letter in front, readable
- * without animation). The scroll timeline starts from the sealed state. */
-
-.rsvp__stage {
+.rsvp__panel {
   display: grid;
-  place-items: center;
-  padding-top: 11rem;
+  gap: 2.25rem;
+  padding: clamp(1.75rem, 5vw, 3.75rem);
+  background: var(--panel-bg);
+  border: 1px solid var(--color-line);
 }
 
-.envelope {
-  position: relative;
-  width: min(460px, 36vw);
-  aspect-ratio: 1.6;
-  perspective: 1400px;
+.rsvp__submit {
+  justify-self: start;
+  margin-top: 0.5rem;
 }
-
-.envelope__back,
-.envelope__front,
-.envelope__flap,
-.envelope__letter,
-.envelope__seal {
-  position: absolute;
-}
-
-.envelope__back {
-  inset: 0;
-  border-radius: 6px;
-  background: var(--wine-600);
-  box-shadow: 0 50px 90px -30px rgb(10 2 4 / 0.7);
-}
-
-.envelope__letter {
-  z-index: 6;
-  left: 6%;
-  right: 6%;
-  bottom: 16%;
-  height: 88%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  padding: 7% 8%;
-  text-align: center;
-  background:
-    radial-gradient(90% 70% at 50% 0%, #fffaf2, transparent 70%),
-    var(--ivory);
-  color: var(--wine-800);
-  border-radius: 3px;
-  box-shadow: 0 20px 40px -18px rgb(10 2 4 / 0.55);
-}
-
-.envelope__letter::before {
-  content: '';
-  position: absolute;
-  inset: 0.55rem;
-  border: 1px solid rgb(185 150 88 / 0.55);
-  pointer-events: none;
-}
-
-.envelope__names {
-  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
-  line-height: 1.1;
-}
-
-.envelope__line {
-  font-size: 0.58rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-
-.envelope__flourish {
-  width: 110px;
-  margin-block: 0.4rem;
-  color: var(--gold);
-}
-
-.envelope__note {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
-}
-
-.envelope__front {
-  inset: 0;
-  z-index: 3;
-  border-radius: 6px;
-  background:
-    linear-gradient(to top right, transparent 49.6%, rgb(0 0 0 / 0.12) 50%, transparent 50.4%),
-    linear-gradient(to top left, transparent 49.6%, rgb(0 0 0 / 0.12) 50%, transparent 50.4%),
-    linear-gradient(160deg, var(--wine-700), var(--wine-800));
-  clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
-}
-
-.envelope__flap {
-  z-index: 1;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 58%;
-  background: linear-gradient(to bottom, var(--wine-500), var(--wine-600));
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  transform-origin: 50% 0%;
-}
-
-/* Static opened state. With motion, GSAP animates the flap from closed. */
-@media (prefers-reduced-motion: reduce) {
-  .envelope__flap {
-    transform: rotateX(180deg);
-  }
-}
-
-.envelope__seal {
-  --size: 64px;
-
-  z-index: 5;
-  left: calc(50% - var(--size) / 2);
-  top: calc(58% - var(--size) / 2);
-  width: var(--size);
-  height: var(--size);
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #a3374b, var(--wine-700) 70%);
-  box-shadow: 0 6px 16px rgb(10 2 4 / 0.45);
-  color: var(--gold-light);
-}
-
-.envelope__seal .monogram {
-  --size: 52px;
-}
-
-/* ---------- Mobile ---------- */
 
 @media (max-width: 767px) {
-  .rsvp__pin {
-    grid-template-columns: minmax(0, 1fr);
-    padding-block: 7rem 6rem;
+  .rsvp__submit {
+    justify-self: stretch;
+  }
+}
+
+@media (min-width: 768px) {
+  .rsvp__intro {
+    grid-column: 1 / 13;
   }
 
-  .rsvp__title {
-    font-size: clamp(3.2rem, 16vw, 5rem);
+  .rsvp__panel {
+    grid-column: 3 / 13;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rsvp__intro {
+    grid-column: 1 / 6;
   }
 
-  .rsvp__stage {
-    padding-top: 9rem;
-    margin-top: 2rem;
-  }
-
-  .envelope {
-    width: min(84vw, 380px);
+  .rsvp__panel {
+    grid-column: 7 / 12;
   }
 }

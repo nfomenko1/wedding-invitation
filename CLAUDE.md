@@ -30,11 +30,17 @@ src/
   main.jsx                  App entry; wraps App in SmoothScrollProvider
   App.jsx                   Root component
   assets/                   Images, fonts, media imported by code
-  components/               Reusable UI components
-  sections/                 One-page sections of the invitation
+  components/               Reusable UI components (Section, SectionMarker, SectionHeading,
+                            ImageFrame, Veil, Button, TextField, ChoiceGroup, Split)
+  sections/                 One-page sections, in page order: Hero, Invitation, Story,
+                            Schedule, Location, DressCode, Details, Rsvp, Finale
+  content/
+    wedding.js              All copy and data; sections only render it
   hooks/
     useGsap.js              gsap.context() scoped to a ref, auto-reverted on unmount
+    useMotion.js            useGsap + gsap.matchMedia() with MEDIA conditions
     useLenis.js             Access the global Lenis instance (null when disabled)
+    useScrollTo.js          Scroll to a target via Lenis (native fallback) and focus it
     usePrefersReducedMotion.js
   lib/
     gsap.js                 Registers plugins; exports gsap, ScrollTrigger, MEDIA queries
@@ -42,9 +48,10 @@ src/
     SmoothScrollProvider.jsx  Single Lenis instance driven by gsap.ticker
     LenisContext.js
   styles/
-    index.css               Global entry (imports lenis.css, reset, base)
+    index.css               Global entry (imports lenis.css, reset, base, theme)
     reset.css               CSS reset
     base.css                Structural base styles, breakpoints, reduced-motion rules
+    theme.css               Neutral blueprint tokens (colors, fonts, type scale) + type classes
 public/                     Static files served as-is
 ```
 

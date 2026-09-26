@@ -1,0 +1,20 @@
+.marker {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(3rem, 8vw, 6.5rem);
+}
+
+.marker__number {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-style: italic;
+  line-height: 1;
+  color: var(--color-ink);
+}
+
+.marker__line {
+  width: 2.5rem;
+  height: 1px;
+  background: var(--color-line-strong);
+}

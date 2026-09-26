@@ -1,149 +1,83 @@
-.story {
+.story__visual {
   position: relative;
-  background: var(--ivory);
-  padding-block: clamp(4rem, 8vw, 8rem) clamp(7rem, 12vw, 12rem);
-  color: var(--wine-800);
+  /* Room for the small photo hanging below the large one. */
+  padding-bottom: 22%;
 }
 
-.story__head {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  text-align: center;
-  margin-bottom: clamp(5rem, 10vw, 9rem);
+.story__tint {
+  top: 14%;
+  right: 0;
+  width: 62%;
+  height: 58%;
 }
 
-.story__title em {
-  color: var(--gold-deep);
+.story__visual .image-frame__label {
+  top: clamp(1.25rem, 2.5vw, 2rem);
+  bottom: auto;
 }
 
-.story__timeline {
+.story__main {
   position: relative;
+  width: 84%;
 }
 
-.story__chapters {
-  display: grid;
-  gap: clamp(6rem, 12vw, 12rem);
-}
-
-.story__line {
+.story__detail {
   position: absolute;
-  top: 0;
+  z-index: 1;
+  right: 0;
   bottom: 0;
-  left: 50%;
-  width: 1px;
-  background: rgb(185 150 88 / 0.25);
+  width: 44%;
+  /* White mat so the overlap reads as a separate print. */
+  border: clamp(0.375rem, 1vw, 0.75rem) solid var(--tone-light);
 }
 
-.story__line-fill {
-  position: absolute;
-  inset: 0;
-  background: var(--gold);
-  transform-origin: 50% 0%;
-}
-
-.chapter {
-  position: relative;
+.story__body {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: clamp(4rem, 9vw, 10rem);
-  align-items: center;
+  gap: 1.25rem;
+  max-width: 30rem;
 }
 
-.chapter__dot {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 13px;
-  height: 13px;
-  margin: -6.5px 0 0 -6.5px;
-  rotate: 45deg;
-  background: var(--ivory);
-  border: 1px solid var(--gold);
-  box-shadow: 0 0 0 6px var(--ivory);
-}
-
-.chapter__media {
-  width: min(100%, 440px);
-  justify-self: end;
-}
-
-.chapter__media .photo {
-  aspect-ratio: 4 / 5;
-}
-
-.chapter--right .chapter__media {
-  grid-column: 2;
-  grid-row: 1;
-  justify-self: start;
-}
-
-.chapter--right .chapter__text {
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: end;
-}
-
-.chapter__text {
-  max-width: 28rem;
-}
-
-.chapter__year {
-  display: block;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 300;
-  font-size: clamp(4.5rem, 9.5vw, 9.5rem);
-  line-height: 0.9;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--gold);
-}
-
-.chapter__title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(1.8rem, 2.8vw, 2.7rem);
-  line-height: 1.05;
-  margin-block: 0.8rem 1.1rem;
-}
-
-.chapter__body p {
-  color: var(--ink-soft);
-  line-height: 1.75;
-}
-
-@media (max-width: 767px) {
-  .story__line {
-    left: 6px;
+/* Tablet and desktop: magazine spread, images left, text right. */
+@media (min-width: 768px) {
+  .story__grid {
+    grid-template-rows: auto 1fr;
   }
 
-  .chapter {
-    grid-template-columns: 1fr;
-    row-gap: 1.8rem;
-    padding-left: 2.4rem;
+  .story__visual {
+    grid-column: 1 / 8;
+    grid-row: 1 / 3;
+    padding-bottom: 16%;
   }
 
-  .chapter__dot {
-    left: 6px;
-    top: 0;
+  .story__heading {
+    grid-column: 8 / 13;
+    grid-row: 1;
+    padding-top: 3rem;
   }
 
-  .chapter__media,
-  .chapter--right .chapter__media {
-    grid-column: 1;
-    grid-row: auto;
-    width: 100%;
-    justify-self: stretch;
+  .story__body {
+    grid-column: 9 / 13;
+    grid-row: 2;
+    align-self: end;
   }
 
-  .chapter--right .chapter__text {
-    grid-column: 1;
-    grid-row: auto;
-    justify-self: start;
+  .story__main {
+    width: 80%;
   }
 
-  .chapter__media .photo {
-    aspect-ratio: 5 / 4;
+  .story__detail {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .story__heading {
+    grid-column: 9 / 13;
+    padding-top: 6rem;
+  }
+
+  .story__body {
+    grid-column: 9 / 12;
+    padding-bottom: 10%;
   }
 }

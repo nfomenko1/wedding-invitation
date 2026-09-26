@@ -1,0 +1,130 @@
+.location__heading {
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+/* Full-bleed on mobile, container-wide above. */
+.location__image {
+  --ratio: 4 / 5;
+  margin-inline: calc(var(--gutter) * -1);
+}
+
+.location__grid {
+  margin-top: clamp(2.5rem, 6vw, 3rem);
+}
+
+.location__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.location__address {
+  margin-top: 0.875rem;
+}
+
+.location__description {
+  max-width: 28rem;
+  margin-block: 1.5rem 2.25rem;
+}
+
+.location__map-panel {
+  position: relative;
+  padding: clamp(0.5rem, 1.2vw, 0.875rem);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 0 0 1px var(--color-line);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+/* ---------- Map placeholder ---------- */
+
+.map {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--color-beige);
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  background-size: 2.5rem 2.5rem;
+}
+
+.map__road {
+  position: absolute;
+  left: -10%;
+  width: 120%;
+  height: 0.375rem;
+  background: var(--color-white);
+}
+
+.map__road--a {
+  top: 38%;
+  rotate: -8deg;
+}
+
+.map__road--b {
+  top: 64%;
+  rotate: 14deg;
+}
+
+.map__road--c {
+  top: 50%;
+  left: 56%;
+  width: 0.375rem;
+  height: 100%;
+  translate: 0 -50%;
+  rotate: 6deg;
+}
+
+.map__pin {
+  position: absolute;
+  top: 46%;
+  left: 57%;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 50%;
+  background: var(--color-ink);
+  box-shadow: 0 0 0 0.625rem rgb(29 28 26 / 0.08);
+  translate: -50% -50%;
+}
+
+.map__label {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .location__image {
+    --ratio: 16 / 9;
+    margin-inline: 0;
+  }
+
+  .location__info {
+    grid-column: 1 / 6;
+    padding-top: 3rem;
+  }
+
+  /* Map panel rises over the lower edge of the photo. */
+  .location__map-panel {
+    grid-column: 7 / 13;
+    margin-top: -8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .location__image {
+    --ratio: 21 / 9;
+  }
+
+  .location__info {
+    grid-column: 1 / 5;
+    padding-top: 4rem;
+  }
+
+  .location__map-panel {
+    grid-column: 7 / 12;
+    margin-top: -11rem;
+  }
+}

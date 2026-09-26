@@ -1,137 +1,145 @@
-// All placeholder copy and imagery for the prototype lives here.
+// Placeholder copy and data for every section of the invitation.
+// Section components only render what is here, so the final names,
+// dates, texts and photos can be dropped in without touching layout.
 //
-// Images: every image entry is passed to <Photo>. Add a `src` (an import
-// from src/assets or a URL) to show a real photo; without `src`, Photo
-// renders a styled gradient placeholder using `tone` and `motif`.
-//   tone:  wine | blush | ivory | dusk | gold | mauve
-//   motif: arch | sun | couple | none
+// Images: add `src` (an import from src/assets or a URL) to an image
+// entry to show a real photo; without it <ImageFrame> renders a neutral
+// placeholder. Aspect ratios are part of the layout and live in the
+// section components.
 
 export const couple = {
-  first: 'Sophie',
-  second: 'Julian',
+  bride: 'Невеста',
+  groom: 'Жених',
 }
 
 export const wedding = {
-  iso: '2027-08-21',
-  short: '21.08.2027',
-  dotted: '21 · 08 · 2027',
-  day: '21',
-  month: 'August',
-  year: '2027',
-  weekday: 'Saturday',
-  venue: 'Château de Lumière',
-  region: 'Provence, France',
-  rsvpBy: '1 June 2027',
+  date: '00.00.0000',
+  city: 'Город',
 }
 
 export const hero = {
-  eyebrow: 'Together with their families',
-  image: { tone: 'blush', motif: 'couple', alt: 'Portrait of Sophie and Julian' },
+  marker: { number: '01', label: 'Intro' },
+  eyebrow: 'Приглашение на свадьбу',
+  scrollHint: 'Листайте',
+  image: { alt: 'Портрет пары' },
 }
 
-export const intro = {
-  lead:
-    'With full hearts and a little disbelief, we invite you to spend a summer evening in Provence with us — to witness our promises, raise a glass, and dance until the candles burn low.',
-  sign: 'Sophie & Julian',
-  badge: 'Sophie & Julian · 21 · 08 · 2027 · Provence · ',
-  images: {
-    main: { tone: 'wine', motif: 'arch', alt: 'Sophie and Julian walking through the vineyard' },
-    small: { tone: 'ivory', motif: 'sun', alt: 'Hand-written letter and dried flowers' },
-  },
+export const invitation = {
+  marker: { number: '02', label: 'Invitation' },
+  title: 'Дорогие родные и близкие',
+  paragraphs: [
+    'Здесь будет текст приглашения. Несколько тёплых предложений о том, как важно для пары разделить этот день с самыми близкими людьми.',
+    'Второй абзац — место для деталей: приглашение провести вечер вместе, отметить начало новой семьи и сохранить общие воспоминания.',
+  ],
+  signature: 'С любовью',
+  image: { alt: 'Фотография пары' },
 }
 
 export const story = {
-  title: ['A love written', 'in chapters'],
-  chapters: [
-    {
-      year: '2019',
-      title: 'A borrowed umbrella',
-      text: 'A sudden downpour on Rue des Martyrs, one umbrella between two strangers, and two trains missed entirely on purpose.',
-      image: { tone: 'dusk', motif: 'arch', alt: 'Rainy Paris street at dusk' },
-    },
-    {
-      year: '2021',
-      title: 'Letters across the sea',
-      text: 'Two cities, six hours apart. Hundreds of letters, a few too many airport goodbyes, and the quiet certainty that it was worth it.',
-      image: { tone: 'ivory', motif: 'sun', alt: 'A bundle of letters tied with ribbon' },
-    },
-    {
-      year: '2025',
-      title: 'A question at dawn',
-      text: 'On a hill above Gordes, before the lavender fields woke up, Julian finally asked. Sophie said yes before he could finish.',
-      image: { tone: 'blush', motif: 'couple', alt: 'Sophie and Julian at sunrise above the lavender fields' },
-    },
-    {
-      year: '2027',
-      title: 'And now, forever',
-      text: 'This summer we begin our next chapter — and we would love nothing more than to begin it surrounded by you.',
-      image: { tone: 'wine', motif: 'arch', alt: 'The chapel doors of Château de Lumière' },
-    },
+  marker: { number: '03', label: 'Our story' },
+  title: 'Наша история',
+  lead: 'Короткий подзаголовок о том, как всё началось.',
+  paragraphs: [
+    'Здесь будет рассказ о знакомстве пары: где и когда они встретились, какими были первые впечатления и первые общие планы.',
+    'Место для продолжения истории — важные моменты, путешествия и то, как пара пришла к решению пожениться.',
+  ],
+  images: {
+    main: { alt: 'Большая фотография пары' },
+    detail: { alt: 'Второе фото' },
+  },
+}
+
+export const schedule = {
+  marker: { number: '04', label: 'Wedding day' },
+  title: 'Программа дня',
+  lead: 'Здесь будет короткое описание дня и основных моментов праздника.',
+  events: [
+    { time: '17:00', title: 'Сбор гостей' },
+    { time: '17:30', title: 'Церемония' },
+    { time: '18:00', title: 'Фотосессия' },
+    { time: '18:55', title: 'Начало банкета' },
+    { time: '00:00', title: 'Завершение праздника' },
   ],
 }
 
-export const gallery = {
-  title: 'Frames of us',
-  text: 'A few quiet moments from the years that led us here.',
-  outro: 'and many more to come…',
-  items: [
-    { size: 'tall', tone: 'wine', motif: 'arch', caption: 'Golden hour, Luberon', alt: 'Couple portrait at golden hour' },
-    { size: 'wide', tone: 'dusk', motif: 'sun', caption: 'The long road south', alt: 'Road through the Provençal hills' },
-    { size: 'small', tone: 'gold', motif: 'none', caption: 'Sunday market', alt: 'Flowers at a village market' },
-    { size: 'tall', tone: 'blush', motif: 'couple', caption: 'The yes', alt: 'Engagement moment' },
-    { size: 'wide', tone: 'mauve', motif: 'arch', caption: 'Summer in Lisbon', alt: 'Evening in Lisbon' },
-    { size: 'small', tone: 'ivory', motif: 'sun', caption: 'Letters', alt: 'Letters and a fountain pen' },
-    { size: 'tall', tone: 'wine', motif: 'couple', caption: 'Home', alt: 'Sophie and Julian at home' },
+export const location = {
+  marker: { number: '05', label: 'Location' },
+  title: 'Место проведения',
+  venue: {
+    name: 'Название площадки',
+    address: 'Город, улица, дом',
+    description:
+      'Здесь будет короткое описание места: атмосфера, как добраться и на что обратить внимание по приезде.',
+  },
+  // `url` will point to the real map; while it is null the button is inert.
+  map: { label: 'Карта', url: null, buttonLabel: 'Посмотреть на карте' },
+  image: { alt: 'Фотография площадки' },
+}
+
+export const dressCode = {
+  marker: { number: '06', label: 'Dress code' },
+  title: 'Дресс-код',
+  description:
+    'Здесь будет описание дресс-кода: общий стиль, пожелания к нарядам и оттенки, которые будут гармонично смотреться на празднике.',
+  paletteLabel: 'Палитра',
+  // Neutral placeholder tones only, not the final wedding palette.
+  palette: [
+    { name: 'Тон 01', value: '#ffffff' },
+    { name: 'Тон 02', value: '#f1ece4' },
+    { name: 'Тон 03', value: '#ddd6cb' },
+    { name: 'Тон 04', value: '#bdb5a9' },
+    { name: 'Тон 05', value: '#8d877e' },
+    { name: 'Тон 06', value: '#45413c' },
+  ],
+  looks: [
+    { alt: 'Образ 01' },
+    { alt: 'Образ 02' },
+    { alt: 'Образ 03' },
+    { alt: 'Образ 04' },
   ],
 }
 
 export const details = {
-  title: ['The day', 'itself'],
-  text: 'One long summer day, from the first vows in the chapel to the last dance under the plane trees.',
-  events: [
-    {
-      numeral: 'I',
-      title: 'The Ceremony',
-      time: '16:00',
-      venue: 'Chapelle Saint-Michel',
-      address: 'Route des Vignes, Gordes',
-      note: 'Kindly be seated by 15:30',
-    },
-    {
-      numeral: 'II',
-      title: 'The Dinner',
-      time: '19:00',
-      venue: 'The Orangery',
-      address: 'Château de Lumière',
-      note: 'Long tables beneath the plane trees',
-    },
-    {
-      numeral: 'III',
-      title: 'The Celebration',
-      time: '22:00',
-      venue: 'The Courtyard',
-      address: 'Château de Lumière',
-      note: 'Music, champagne and dancing until late',
-    },
-  ],
-  facts: [
-    { label: 'Dress code', text: 'Black tie. Shades of wine, ivory and gold are warmly welcome.' },
-    { label: 'Stay', text: 'Rooms are reserved nearby — details follow with your confirmation.' },
-    { label: 'Travel', text: 'A shuttle will run from Avignon TGV throughout the day.' },
+  marker: { number: '07', label: 'Details' },
+  title: 'Детали',
+  lead: 'Важная информация для гостей.',
+  items: [
+    { title: 'Подарки', text: 'Здесь будет информация о пожеланиях по подаркам.' },
+    { title: 'Транспорт', text: 'Здесь будет информация о трансфере и парковке.' },
+    { title: 'Размещение', text: 'Здесь будет информация о проживании для гостей.' },
+    { title: 'Вопросы', text: 'Здесь будут контакты для связи по любым вопросам.' },
   ],
 }
 
 export const rsvp = {
-  title: ['Will you', 'join us?'],
-  text: 'Nothing would make our day more complete than having you there. Kindly let us know by 1 June 2027.',
-  cta: 'Reply to the invitation',
-  letter: {
-    line: 'request the pleasure of your company',
-    note: 'Kindly reply by 1 June 2027',
+  marker: { number: '08', label: 'RSVP' },
+  title: 'Подтвердите присутствие',
+  description: 'Здесь будет короткая просьба подтвердить присутствие.',
+  deadline: 'Ответ до 00.00.0000',
+  fields: {
+    name: { label: 'Ваше имя' },
+    attendance: {
+      legend: 'Вы будете с нами?',
+      options: [
+        { value: 'yes', label: 'Да' },
+        { value: 'no', label: 'К сожалению, нет' },
+      ],
+    },
+    plusOne: {
+      legend: 'Будете ли вы с +1?',
+      options: [
+        { value: 'yes', label: 'Да' },
+        { value: 'no', label: 'Нет' },
+      ],
+    },
+    companion: { label: 'Имя сопровождающего' },
+    comment: { label: 'Комментарий' },
   },
+  submitLabel: 'Отправить',
 }
 
 export const finale = {
-  eyebrow: 'Until then, with love',
-  footer: 'Experimental prototype · placeholder names, content and imagery',
+  marker: { number: '09', label: 'Finale' },
+  title: 'Будем ждать вас!',
+  image: { alt: 'Фотография пары' },
 }
