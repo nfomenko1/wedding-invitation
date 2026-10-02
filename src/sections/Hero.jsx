@@ -28,11 +28,6 @@ export default function Hero() {
           <Veil variant="glass" className="hero__glass" />
         </div>
       </div>
-
-      <div className="hero__scroll">
-        <span className="t-label">{hero.scrollHint}</span>
-        <span className="hero__scroll-line" aria-hidden="true" />
-      </div>
     </Section>
   )
 }

@@ -17,10 +17,25 @@ export const wedding = {
   city: 'Город',
 }
 
+// Intro scene before 01. Media paths are relative to public/.
+export const intro = {
+  lines: ['У нас для вас кое-что особенное', 'Приглашаем вас на нашу свадьбу'],
+  openLabel: 'Открыть приглашение',
+}
+
+export const media = {
+  introVideo: 'video/video_intro.mp4',
+  music: 'audio/music_1.mp3',
+}
+
+export const sound = {
+  on: 'Звук вкл',
+  off: 'Звук выкл',
+}
+
 export const hero = {
   marker: { number: '01', label: 'Intro' },
   eyebrow: 'Приглашение на свадьбу',
-  scrollHint: 'Листайте',
   image: { alt: 'Портрет пары' },
 }
 
@@ -49,6 +64,15 @@ export const story = {
   },
 }
 
+// 03: three rows of photos moved by scroll. Placeholders for now; add
+// `src` and `alt` to a frame to show a real photo later.
+export const filmStrip = {
+  label: 'Наши фотографии',
+  rows: [0, 1, 2].map((row) =>
+    Array.from({ length: 7 }, (_, i) => ({ number: String(row * 7 + i + 1).padStart(2, '0') })),
+  ),
+}
+
 export const schedule = {
   marker: { number: '04', label: 'Wedding day' },
   title: 'Программа дня',
@@ -64,16 +88,17 @@ export const schedule = {
 
 export const location = {
   marker: { number: '05', label: 'Location' },
-  title: 'Место проведения',
   venue: {
-    name: 'Название площадки',
-    address: 'Город, улица, дом',
-    description:
-      'Здесь будет короткое описание места: атмосфера, как добраться и на что обратить внимание по приезде.',
+    name: 'Jani Crystal',
+    city: 'Воронеж',
   },
+  date: '21 августа 2027',
+  // Beside the destination point of the 04 → 05 route.
+  routeLabel: 'Место проведения мероприятия',
   // `url` will point to the real map; while it is null the button is inert.
   map: { label: 'Карта', url: null, buttonLabel: 'Посмотреть на карте' },
-  image: { alt: 'Фотография площадки' },
+  // Path relative to public/.
+  image: { src: 'images/venue/Jani_Crystal.png', alt: 'Площадка Jani Crystal, Воронеж' },
 }
 
 export const dressCode = {
@@ -91,13 +116,29 @@ export const dressCode = {
     { name: 'Тон 05', value: '#8d877e' },
     { name: 'Тон 06', value: '#45413c' },
   ],
+  // Shown as an endless, slowly moving ribbon.
   looks: [
     { alt: 'Образ 01' },
     { alt: 'Образ 02' },
     { alt: 'Образ 03' },
     { alt: 'Образ 04' },
+    { alt: 'Образ 05' },
+    { alt: 'Образ 06' },
+    { alt: 'Образ 07' },
+    { alt: 'Образ 08' },
   ],
 }
+
+// Top navigation: section ids in page order (the intro is not listed).
+export const nav = [
+  { id: 'invitation', label: 'Приглашение' },
+  { id: 'film-strip', label: 'Фото' },
+  { id: 'schedule', label: 'День мероприятия' },
+  { id: 'location', label: 'Место проведения' },
+  { id: 'dress-code', label: 'Дресс-код' },
+  { id: 'details', label: 'Детали' },
+  { id: 'rsvp', label: 'Подтверждение гостей' },
+]
 
 export const details = {
   marker: { number: '07', label: 'Details' },
@@ -113,7 +154,7 @@ export const details = {
 
 export const rsvp = {
   marker: { number: '08', label: 'RSVP' },
-  title: 'Подтвердите присутствие',
+  title: 'Подтверждение гостей',
   description: 'Здесь будет короткая просьба подтвердить присутствие.',
   deadline: 'Ответ до 00.00.0000',
   fields: {

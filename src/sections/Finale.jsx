@@ -20,7 +20,6 @@ export default function Finale() {
       <div className="finale__visual">
         <Veil variant="frame" className="finale__frame" />
         <ImageFrame className="finale__image" {...finale.image} />
-        <Veil variant="glass" className="finale__glass" />
       </div>
     </Section>
   )

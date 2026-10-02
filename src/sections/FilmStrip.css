@@ -1,0 +1,57 @@
+/* 03: dark scene, three full-bleed rows of frames running past both edges. */
+.film-strip {
+  /* Mobile: one to two large frames in view. */
+  --film-frame-width: 62vw;
+  --film-frame-ratio: 62 / 42;
+  --film-gap: 18px;
+
+  position: relative;
+  display: grid;
+  align-content: center;
+  row-gap: var(--film-gap);
+  /* Fills the screen while pinned. */
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-block: var(--section-space);
+  overflow: hidden;
+  background: var(--color-ink);
+  /* Above the 04 scene, which waits under it for the hand-over. */
+  z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .film-strip {
+    /* About 4–5 frames in view on desktop. */
+    --film-frame-width: clamp(220px, 17vw, 260px);
+    --film-frame-ratio: 36 / 25;
+    --film-gap: 34px;
+  }
+}
+
+.film-strip__track {
+  display: flex;
+  gap: var(--film-gap);
+  width: max-content;
+  will-change: transform;
+}
+
+.film-strip__frame {
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+  width: var(--film-frame-width);
+  aspect-ratio: var(--film-frame-ratio);
+  padding: clamp(0.75rem, 1.4vw, 1rem);
+  border: 1px solid rgb(248 245 240 / 0.08);
+  border-radius: 6px;
+  background: linear-gradient(160deg, rgb(248 245 240 / 0.07), rgb(248 245 240 / 0.025));
+  rotate: var(--tilt, 0deg);
+}
+
+.film-strip__number {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  font-weight: 300;
+  line-height: 1;
+  color: rgb(248 245 240 / 0.4);
+}

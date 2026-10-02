@@ -1,0 +1,80 @@
+/* The 04 scene sits under 03 (z-index 2) until 03 has dissolved. */
+.route-transition__scene {
+  position: relative;
+  z-index: 1;
+}
+
+/* With the transition on, 04's scene is at least one screen tall, in 04's
+   tone, so the pinned screen is always all 04. */
+.route-transition.is-active .route-transition__scene {
+  min-height: 100vh;
+  min-height: 100svh;
+  background: var(--tone-warm);
+}
+
+/* With the transition on, 05 is the last layer of the scene: one screen at
+   its bottom (what is in view while pinned), over the route, opened out of
+   the destination point (clip-path, set by the sequence). */
+.route-transition.is-active .route-transition__next {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  height: 100svh;
+  z-index: 3;
+  clip-path: circle(0 at 50% 50%);
+}
+
+/* One screen, at the bottom of 04: what is in view while 04 is pinned. */
+.route-transition__overlay {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  height: 100svh;
+  /* Above 04's timeline (z-index 1). */
+  z-index: 2;
+  pointer-events: none;
+}
+
+.route-transition.is-active .route-transition__overlay {
+  display: block;
+}
+
+.route-transition__route {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Same hairline as the timeline. */
+.route-transition__path {
+  fill: none;
+  stroke: var(--color-line-strong);
+  stroke-width: 1;
+}
+
+/* Destination: a timeline dot, filled. */
+.route-transition__dest {
+  position: absolute;
+  width: 0.5625rem;
+  height: 0.5625rem;
+  margin: -0.28125rem 0 0 -0.28125rem;
+  border-radius: 50%;
+  background: var(--color-ink);
+  scale: 0;
+}
+
+.route-transition__label {
+  position: absolute;
+  margin: 0;
+  white-space: nowrap;
+  color: var(--color-ink-soft);
+  opacity: 0;
+  visibility: hidden;
+}

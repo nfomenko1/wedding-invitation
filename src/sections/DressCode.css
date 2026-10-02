@@ -29,21 +29,33 @@
 }
 
 .dress__looks {
+  /* Look width and gap; the ribbon is clipped to this box, with a very soft
+     fade at both ends so looks ease in and out. */
+  --look-gap: 1rem;
+  --look-width: 62cqw;
+
   position: relative;
   margin-top: clamp(3.5rem, 8vw, 6.5rem);
+  container-type: inline-size;
+  overflow-x: clip;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
 }
 
-.dress__veil {
-  display: none;
-}
-
-/* Two staggered columns on mobile. */
+/* One staggered row, the set laid out twice (see DressCode.jsx); the end
+   padding makes the row exactly two sets long, so -50% is one set. */
 .looks {
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  display: flex;
+  gap: var(--look-gap);
+  width: max-content;
+  padding-inline-end: var(--look-gap);
   padding-bottom: 3rem;
+}
+
+.looks__item {
+  flex: none;
+  width: var(--look-width);
 }
 
 .looks__item:nth-child(even) {
@@ -68,21 +80,13 @@
     width: 3.5rem;
   }
 
-  .looks {
-    gap: var(--grid-gap);
+  .dress__looks {
+    --look-gap: var(--grid-gap);
+    --look-width: calc((100cqw - 2 * var(--look-gap)) / 3);
   }
 
   .looks__item:nth-child(even) {
     translate: 0 4rem;
-  }
-
-  .dress__veil {
-    display: block;
-    z-index: 1;
-    top: 10%;
-    left: 34%;
-    width: 32%;
-    height: 24%;
   }
 }
 
@@ -92,19 +96,16 @@
     grid-column: 1 / 6;
   }
 
+  /* Four looks in view, as wide as the former four columns. */
+  .dress__looks {
+    --look-width: calc((100cqw - 3 * var(--look-gap)) / 4);
+  }
+
   .looks {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
     padding-bottom: 5rem;
   }
 
   .looks__item:nth-child(even) {
     translate: 0 5rem;
-  }
-
-  .dress__veil {
-    top: 18%;
-    left: 18%;
-    width: 30%;
-    height: 34%;
   }
 }

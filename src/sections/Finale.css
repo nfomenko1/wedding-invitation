@@ -1,5 +1,6 @@
+/* The last section ends shortly after its photo: no extra scroll below. */
 .finale {
-  padding-bottom: calc(var(--section-space) * 1.25);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 .finale__text {
@@ -30,14 +31,6 @@
   inset: -1rem -0.75rem 1rem 0.75rem;
 }
 
-.finale__glass {
-  z-index: 2;
-  right: -0.75rem;
-  bottom: -1.5rem;
-  width: 52%;
-  height: 22%;
-}
-
 @media (min-width: 768px) {
   .finale__image {
     --ratio: 16 / 9;
@@ -45,12 +38,5 @@
 
   .finale__frame {
     inset: -1.75rem 1.75rem 1.75rem -1.75rem;
-  }
-
-  .finale__glass {
-    right: 8%;
-    bottom: -2.5rem;
-    width: 34%;
-    height: 30%;
   }
 }

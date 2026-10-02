@@ -1,0 +1,39 @@
+/* Panes slide sideways during 06 → 07; nothing may widen the page. */
+.section-handoffs {
+  position: relative;
+  overflow-x: clip;
+}
+
+/* Each pane clips its section sideways (07's pane is pinned, i.e. fixed,
+   so the outer clip alone wouldn't hold it). */
+.section-handoffs__pane {
+  position: relative;
+  overflow-x: clip;
+}
+
+/* With the hand-overs on, each pane is at least one screen tall (so the
+   next one, laid under its last screen, fills the screen), and each pane is
+   above the one before it. */
+.section-handoffs.is-active .section-handoffs__pane {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.section-handoffs.is-active .section-handoffs__pane > section {
+  min-height: inherit;
+}
+
+.section-handoffs.is-active .section-handoffs__pane--2 {
+  z-index: 1;
+}
+
+.section-handoffs.is-active .section-handoffs__pane--3 {
+  z-index: 2;
+}
+
+/* 07 and 08 arrive on one screen under the top navigation: less top
+   padding, so their content sits higher (nothing else changes). */
+.section-handoffs.is-active .section-handoffs__pane--2 > section,
+.section-handoffs.is-active .section-handoffs__pane--3 > section {
+  padding-top: clamp(5.5rem, 8vw, 7.25rem);
+}

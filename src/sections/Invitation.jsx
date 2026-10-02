@@ -7,13 +7,13 @@ import './Invitation.css'
 
 export default function Invitation() {
   return (
-    <Section id="invitation" tone="warm" marker={invitation.marker} labelledBy="invitation-title">
+    <Section id="invitation" tone="warm" marker={invitation.marker} labelledBy="invitation-title" className="invitation">
       <div className="invitation__grid layout-grid">
         <SectionHeading id="invitation-title" title={invitation.title} className="invitation__heading" />
 
         <div className="invitation__visual">
           <Veil variant="frame" className="invitation__frame" />
-          <ImageFrame className="invitation__image" ratio="3 / 4" {...invitation.image} />
+          <ImageFrame className="invitation__image" {...invitation.image} />
         </div>
 
         <div className="invitation__body">

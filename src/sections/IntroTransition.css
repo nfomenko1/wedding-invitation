@@ -1,0 +1,72 @@
+/*
+ * 01 → 02 track. Only laid out horizontally where the transition runs
+ * (tablet / desktop with motion allowed; matches IntroTransition.jsx).
+ */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .intro-transition {
+    overflow: hidden;
+  }
+
+  .intro-transition__track {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    width: 200%;
+  }
+
+  /* One screen-wide panel per section. */
+  .intro-transition__track > .section {
+    flex: 0 0 50%;
+  }
+
+  /* The Hero portrait travels into the Invitation panel. */
+  .intro-transition .hero {
+    overflow-x: visible;
+  }
+
+  /*
+   * 02 is one screen tall with the same vertical rhythm as 01, so when the
+   * track stops the whole composition is in view and the portrait lands
+   * level with where it left.
+   */
+  .intro-transition .invitation {
+    /* Same room under the fixed top navigation as 01 (Hero.css). */
+    --inv-gap: clamp(1.25rem, 3vh, 2rem);
+    --inv-top: calc(clamp(0.625rem, 2vw, 1.25rem) + 2.8125rem + 1.5rem + var(--inv-gap));
+    display: flex;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-block: var(--inv-top) var(--inv-gap);
+  }
+
+  /* The portrait (4 / 5 here) never taller than that room. */
+  .intro-transition .invitation__visual {
+    max-width: calc((100svh - var(--inv-top) - var(--inv-gap)) * 4 / 5);
+  }
+
+  .intro-transition .invitation > .section__inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .intro-transition .invitation .marker {
+    margin-bottom: clamp(2.5rem, 7vw, 3rem);
+  }
+
+  .intro-transition .invitation__grid {
+    margin-block: auto;
+  }
+
+  /*
+   * The Hero frame is the one frame for both screens: 02 takes its ratio,
+   * hides its own outline, and only its photo fades in over the Hero one.
+   */
+  .intro-transition .invitation__image {
+    --ratio: 4 / 5;
+    background: transparent;
+  }
+
+  .intro-transition .invitation__frame {
+    display: none;
+  }
+}

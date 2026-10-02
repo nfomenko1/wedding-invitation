@@ -26,6 +26,8 @@
 
 .hero__eyebrow {
   margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: clamp(0.8125rem, 1vw, 0.9375rem);
+  color: var(--color-ink-soft);
 }
 
 .hero__names {
@@ -62,7 +64,7 @@
 .hero__visual {
   position: relative;
   z-index: 1;
-  width: 82%;
+  width: 90%;
   margin-left: auto;
 }
 
@@ -77,43 +79,40 @@
 
 .hero__glass {
   z-index: 2;
-  left: -16%;
+  left: -10%;
   bottom: 14%;
   width: 44%;
   aspect-ratio: 1;
 }
 
-.hero__scroll {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.875rem;
-  margin-top: clamp(2.5rem, 6vw, 3rem);
-}
-
-.hero__scroll-line {
-  width: 1px;
-  height: 3rem;
-  margin-left: 0.25rem;
-  background: var(--color-line-strong);
-}
-
 /* Tablet and desktop: names and portrait share one row and overlap. */
 @media (min-width: 768px) {
+  /* The composition sits centred in the space under the fixed top
+     navigation (SiteNav.css: its offset + height), clear of it with the
+     frame that rises above the portrait; `--hero-room` is the height the
+     portrait may take. */
+  .hero {
+    --hero-gap: clamp(1.25rem, 3vh, 2rem);
+    --hero-top: calc(clamp(0.625rem, 2vw, 1.25rem) + 2.8125rem + 1.5rem + var(--hero-gap));
+    --hero-room: calc(100svh - var(--hero-top) - var(--hero-gap));
+    padding-block: var(--hero-top) var(--hero-gap);
+  }
+
   .hero__text {
     grid-column: 1 / 9;
     grid-row: 1;
   }
 
   .hero__visual {
-    grid-column: 7 / 13;
+    grid-column: 6 / 13;
     grid-row: 1;
-    width: 100%;
+    justify-self: end;
+    width: min(94%, calc(var(--hero-room) * 4 / 5));
     margin: 0;
   }
 
   .hero__name--second {
-    padding-left: 1.2em;
+    padding-left: 1em;
   }
 
   .hero__frame {
@@ -125,18 +124,16 @@
     bottom: 10%;
     width: 42%;
   }
-
-  .hero__scroll {
-    margin-top: 0;
-  }
 }
 
 @media (min-width: 1024px) {
   .hero__visual {
-    grid-column: 7 / 12;
+    grid-column: 7 / 13;
+    justify-self: start;
+    width: min(88%, calc(var(--hero-room) * 4 / 5));
   }
 
   .hero__name--second {
-    padding-left: 1.5em;
+    padding-left: 1.37em;
   }
 }

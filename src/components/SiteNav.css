@@ -1,0 +1,93 @@
+/* Fixed at the top, in the sound toggle's row and glass. Mobile: from the
+   left edge up to the toggle; desktop: centred, clear of the toggle. */
+.site-nav {
+  --toggle-room: calc(7.5rem + 0.75rem);
+
+  position: fixed;
+  top: calc(clamp(0.625rem, 2vw, 1.25rem) + env(safe-area-inset-top));
+  left: calc(var(--gutter) + env(safe-area-inset-left));
+  right: calc(var(--gutter) + var(--toggle-room) + env(safe-area-inset-right));
+  z-index: 110;
+  display: flex;
+  justify-content: flex-start;
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .site-nav {
+    left: calc(var(--gutter) + var(--toggle-room));
+    justify-content: center;
+  }
+}
+
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  box-sizing: border-box;
+  height: 2.8125rem;
+  padding: 0 0.5rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  /* Matte glass: an even light veil over a soft blur, a hairline light
+     edge and a barely-there shadow. */
+  border: 1px solid rgb(255 255 255 / 0.5);
+  border-radius: 999px;
+  background-color: rgb(255 255 255 / 0.38);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+  backdrop-filter: blur(16px) saturate(1.15);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.45),
+    0 1px 2px rgb(29 28 26 / 0.04),
+    0 6px 18px -8px rgb(29 28 26 / 0.12);
+  pointer-events: auto;
+}
+
+.site-nav__list::-webkit-scrollbar {
+  display: none;
+}
+
+.site-nav__link {
+  position: relative;
+  display: block;
+  padding: 0 0.875rem;
+  line-height: 2.6875rem;
+  white-space: nowrap;
+  color: var(--color-ink);
+  opacity: 0.55;
+  transition: opacity 0.4s ease;
+}
+
+.site-nav__link:hover {
+  opacity: 0.85;
+}
+
+/* Marked entry: full ink and a small point under it. */
+.site-nav__link.is-active {
+  opacity: 1;
+}
+
+.site-nav__link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0.55rem;
+  width: 3px;
+  height: 3px;
+  margin-left: -1.5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.site-nav__link.is-active::after {
+  opacity: 1;
+}
+
+.site-nav__link:focus-visible {
+  outline: 2px solid rgb(255 255 255 / 0.9);
+  outline-offset: -4px;
+  border-radius: 999px;
+}

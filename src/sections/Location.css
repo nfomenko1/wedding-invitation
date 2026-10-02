@@ -1,61 +1,76 @@
-.location__heading {
-  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
-}
-
-/* Full-bleed on mobile, container-wide above. */
-.location__image {
-  --ratio: 4 / 5;
-  margin-inline: calc(var(--gutter) * -1);
-}
-
-.location__grid {
-  margin-top: clamp(2.5rem, 6vw, 3rem);
-}
-
-.location__info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.location__address {
-  margin-top: 0.875rem;
-}
-
-.location__description {
-  max-width: 28rem;
-  margin-block: 1.5rem 2.25rem;
-}
-
-.location__map-panel {
+/* One full screen: the photo, the venue over it, the map place on the right. */
+.location {
   position: relative;
-  padding: clamp(0.5rem, 1.2vw, 0.875rem);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 0 0 1px var(--color-line);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  backdrop-filter: blur(var(--glass-blur));
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--color-stone);
+  color: var(--color-ivory);
 }
 
-/* ---------- Map placeholder ---------- */
+.location__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* Soft shade at the bottom so the text reads on the photo. */
+.location__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(29 28 26 / 0.55), rgb(29 28 26 / 0) 55%);
+  pointer-events: none;
+}
+
+/* Mobile: the map above, the venue at the very bottom, on the shade. */
+.location__content {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  padding-bottom: calc(clamp(2rem, 7vh, 4.5rem) + env(safe-area-inset-bottom));
+}
+
+.location__city {
+  margin-top: 0.5rem;
+  color: rgb(248 245 240 / 0.85);
+}
+
+/* ---------- Map place: glass, like the intro's "open" button ---------- */
 
 .map {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
+  max-height: 30svh;
   overflow: hidden;
-  background-color: var(--color-beige);
+  border: 1px solid rgb(255 255 255 / 0.5);
+  border-radius: 9px;
+  background-color: rgb(255 255 255 / 0.12);
   background-image:
-    linear-gradient(var(--color-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
-  background-size: 2.5rem 2.5rem;
+    linear-gradient(rgb(255 255 255 / 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.1) 1px, transparent 1px),
+    linear-gradient(180deg, rgb(255 255 255 / 0.22), rgb(255 255 255 / 0.1));
+  background-size:
+    2.5rem 2.5rem,
+    2.5rem 2.5rem,
+    auto;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+  box-shadow:
+    0 10px 30px rgb(29 28 26 / 0.14),
+    inset 0 1px 0 rgb(255 255 255 / 0.3);
 }
 
 .map__road {
   position: absolute;
   left: -10%;
   width: 120%;
-  height: 0.375rem;
-  background: var(--color-white);
+  height: 1px;
+  background: rgb(255 255 255 / 0.45);
 }
 
 .map__road--a {
@@ -71,8 +86,8 @@
 .map__road--c {
   top: 50%;
   left: 56%;
-  width: 0.375rem;
-  height: 100%;
+  width: 1px;
+  height: 120%;
   translate: 0 -50%;
   rotate: 6deg;
 }
@@ -81,50 +96,35 @@
   position: absolute;
   top: 46%;
   left: 57%;
-  width: 0.875rem;
-  height: 0.875rem;
+  width: 0.625rem;
+  height: 0.625rem;
   border-radius: 50%;
-  background: var(--color-ink);
-  box-shadow: 0 0 0 0.625rem rgb(29 28 26 / 0.08);
+  background: var(--color-ivory);
+  box-shadow: 0 0 0 0.5rem rgb(248 245 240 / 0.18);
   translate: -50% -50%;
 }
 
 .map__label {
   position: absolute;
   left: 1.25rem;
-  bottom: 1.25rem;
+  bottom: 1rem;
+  color: rgb(248 245 240 / 0.8);
 }
 
 @media (min-width: 768px) {
-  .location__image {
-    --ratio: 16 / 9;
-    margin-inline: 0;
+  .location__content {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--grid-gap);
+    align-items: end;
   }
 
   .location__info {
-    grid-column: 1 / 6;
-    padding-top: 3rem;
+    grid-column: 1 / 7;
   }
 
-  /* Map panel rises over the lower edge of the photo. */
-  .location__map-panel {
-    grid-column: 7 / 13;
-    margin-top: -8rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .location__image {
-    --ratio: 21 / 9;
-  }
-
-  .location__info {
-    grid-column: 1 / 5;
-    padding-top: 4rem;
-  }
-
-  .location__map-panel {
-    grid-column: 7 / 12;
-    margin-top: -11rem;
+  .location__map {
+    grid-column: 8 / 13;
+    max-height: 40svh;
   }
 }
